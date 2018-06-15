@@ -23,35 +23,27 @@
     mfa_serial = arn:aws:iam::[ACCOUNT_ID]:mfa/myuser
     ```
 
-Test that it works:
+4.  Test that it works:
+    ```bash
+    aws-vault exec playground -- aws s3 ls
+    ```
 
-```bash
-aws-vault exec playground -- aws s3 ls
-```
+5.  Running terraform:
+    ```bash
+    aws-vault exec playground -- terraform apply`
+    ```
 
-Running terraform:
-
-```bash
-aws-vault exec playground -- terraform apply`
-```
-
-Set up AWS profile with MFA
-Create a provider to use the profile.
-Create a resource and apply incremental changes until it functions
-Create a S3 bucket
-Check that the bucket exists
-Add outputs to terraform config for bucket name and bucket endpoint
-Add versioning to bucket
-Check versioning is on
-Add object index.html to bucket
-Try and access bucket
-Add web access to bucket
-Try and access bucket
-Add bucket policy
-Try and access file
-Create a S3 bucket and dynamodb state storage
-Update terraform to use s3 remote state
-Create a new template that uses remote terraform state to find the bucket name
-Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
-Terraform linting
-terraform fmt .
+6.  Create a resource and apply incremental changes until it functions
+7.  Create a S3 bucket
+8.  Check that the bucket exists
+9.  Add outputs to terraform config for bucket name and bucket endpoint
+10.  Add object index.html to bucket
+11.  Try and access bucket
+12.  Add web access to bucket
+14.  Add external state storage to config, and init terraform to use s3 remote state
+15.  Create a new template that uses remote terraform state to find the bucket name
+16.  Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
+17.  Terraform linting
+    ```bash
+    terraform fmt .
+    ```
