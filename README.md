@@ -1,4 +1,33 @@
 # Terraform Day One
+## Overview
+Terraform is a tool for provisioning infrastructure. It is a structured templating language that supports many different providers, not just AWS. As well as most resources for each provider. Because Terraform is open source, you can also create your own providers, and resources.
+You define the resources you need as code in Terraform templates.
+
+Terraform allows the infrastructure to be defined as code giving three measurable benefits:
+*  Reduced Cost
+*  Faster Execution
+*  Remove Errors and Risks
+
+Which also means that you gain the benefits of code tools such as:
+*  Source control
+*  Versioning
+*  Shared team access
+*  Project boards
+*  Approval sign off
+*  And any other tools you would use for software development governance
+
+## Example Terraform
+This is what a resource that creates an S3 bucket looks like:
+```hcl
+resource "aws_s3_bucket" "b" {
+  bucket_prefix = "new_bucket"
+}
+```
+
+## Training Goals
+
+
+## Tasks
 1.  Install aws-vault and awscli and terraform
     ```bash
     brew cask install aws-vault
