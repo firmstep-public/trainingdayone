@@ -84,12 +84,11 @@ Though this workshop we will learn:
     ```
 9.  Add outputs to Terraform config for bucket name and bucket endpoint
 10.  Add object `index.html` and `error.html` to bucket
-11.  Try and access bucket
-12.  Add web access to bucket
-14.  Add external state storage to config, and init terraform to use s3 remote state
-15.  Create a new template that uses remote terraform state to find the bucket name
-16.  Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
-17.  Terraform linting
+11.  Add web access to bucket - example found in demo_two
+12.  Add external state storage to config, and init terraform to use s3 remote state - example found in demo_two
+13.  Create a new template that uses remote terraform state to find the bucket name
+14.  Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
+15.  Terraform linting
      ```bash
       terraform fmt .
      ```
