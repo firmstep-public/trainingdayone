@@ -1,4 +1,6 @@
 # Terraform Day One (101)
+#### Note: The code supplied in this repository is for speaking to, and verifying the class code against, not for the class to copy and paste from. Who learns from that?
+
 ## Overview
 Terraform is a tool for provisioning infrastructure. It is a structured templating language that supports many different providers, not just AWS. As well as most resources for each provider. Because Terraform is open source, you can also create your own providers, and resources.
 You define the resources you need as code in Terraform templates.
@@ -66,17 +68,20 @@ Though this workshop we will learn:
 
 4.  Test that it works:
     ```bash
-    aws-vault exec playground -- aws s3 ls
+    aws-vault exec terraformrole -- aws s3 ls
     ```
 
 5.  Running terraform:
     ```bash
-    aws-vault exec playground -- terraform apply
+    aws-vault exec terraformrole -- terraform apply
     ```
 
 6.  Create a resource and apply incremental changes until it functions
-7.  Create a S3 bucket
-8.  Check that the bucket exists
+7.  Create a S3 bucket as a Terraform resource
+8.  Check that the bucket exists via AWS Console or AWS CLI
+    ```bash
+    aws-vault exec terraformrole -- aws s3 ls
+    ```
 9.  Add outputs to Terraform config for bucket name and bucket endpoint
 10.  Add object `index.html` and `error.html` to bucket
 11.  Try and access bucket
