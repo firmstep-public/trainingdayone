@@ -59,7 +59,7 @@ resource "aws_s3_bucket" "b" {
 
 5.  Running terraform:
     ```bash
-    aws-vault exec playground -- terraform apply`
+    aws-vault exec playground -- terraform apply
     ```
 
 6.  Create a resource and apply incremental changes until it functions
@@ -73,6 +73,6 @@ resource "aws_s3_bucket" "b" {
 15.  Create a new template that uses remote terraform state to find the bucket name
 16.  Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
 17.  Terraform linting
-    ```bash
-    terraform fmt .
+     ```bash
+      terraform fmt .
     ```
