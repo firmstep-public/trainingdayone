@@ -1,7 +1,3 @@
-variable "web_bucket_name" {
-  description = "The unique name of the web bucket"
-}
-
 resource "aws_s3_bucket" "web" {
   bucket        = "${var.web_bucket_name}"
   acl           = "public-read"
