@@ -106,12 +106,13 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     aws-vault exec terraformrole -- aws s3 ls
     ```
 9.  Add outputs to Terraform config for bucket name and bucket endpoint
-10.  Add object `index.html` and `error.html` to bucket
-11.  Add web access to bucket - example found in demo_two
-12.  Add external state storage to config, and init terraform to use s3 remote state - example found in demo_two
-13.  Create a new template that uses remote terraform state to find the bucket name
-14.  Create a new s3 object that uploads to the same bucket from another template using the discovered bucket name from the remote state.
-15.  Terraform linting
+
+10.  Add web access to bucket - example found in demo_two
+11.  Add external state storage to config, and init terraform to use s3 remote state - example found in demo_two
+12.  Create a new template that uses remote terraform state to find the bucket name
+13.  Create a new `aws_s3_bucket_object` to the terraform template that uploads `index.html` and `error.html` to the same bucket from another template using the discovered bucket name from the remote state to bucket
+14.  Terraform linting - to tidy up your code
      ```bash
       terraform fmt .
      ```
+     If you use **[Visual Studio Code](https://code.visualstudio.com/download)** as your IDE then you can install the [Terraform Plugin](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) to get syntax highlighting, code completion, and automatic formatting on file save. It works on Mac, Linux, and Windows.
