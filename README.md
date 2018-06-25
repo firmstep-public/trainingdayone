@@ -41,6 +41,13 @@ Though this workshop we will learn:
 *  How to access the state information of one Terraform template, from another Terraform template.
 
 
+### NOTE
+It is important to note that this tutorial assumes you have your own IAM User that has 
+restricted permissions and MFA enabled (Which will use the local AWS profile name of `securityaccount`),
+and a second role (and aws profile) that has more elevated permissions to run Terraform with called `terraformrole`. 
+This could be within the same AWS Account, or across multiple AWS accounts.
+If you haven't got this configured, then [start by doing that.](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+
 ## Tasks
 1.  Install `aws-vault` and `awscli` and `terraform`
 
