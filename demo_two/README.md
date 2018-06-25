@@ -1,7 +1,8 @@
 # Demo Two
+### Configure a remote state so that the state information of Terraform isn't stored on the local computer.
 
-Make an incrimental modification to the s3 bucket created in [demo_one](../demo_one) to make it a static web host.
-
-Configure a remote state so that the state information of Terraform isn't stored on the local computer.
-
-This allows for a team to work on the same configuration.
+Create an `aws_s3_bucket` resource and configure it as a website endpoint.
+Add outputs to Terraform for bucket name and bucket endpoint
+Add external terraform state storage block to the `main.tf` file
+Use `terraform init` with the s3 bucket details to instruct terraform to use s3 remote state storage
+Use `terraform apply` to deploy the bucket, and save the state on s3.
