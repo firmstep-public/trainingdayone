@@ -1,5 +1,4 @@
 # Terraform Day One (101)
-#### Note: The code supplied in this repository is for speaking to, and verifying the class code against, not for the class to copy and paste from. Who learns from that?
 
 ## Overview
 Terraform is a tool for provisioning infrastructure. It is a structured templating language that supports many different providers, not just AWS. As well as most resources for each provider. Because Terraform is open source, you can also create your own providers, and resources.
@@ -17,14 +16,6 @@ Which also means that you gain the benefits of code tools such as:
 *  Project boards
 *  Approval sign off
 *  And any other tools you would use for software development governance
-
-## Example Terraform
-This is what a resource that creates an S3 bucket looks like:
-```hcl
-resource "aws_s3_bucket" "b" {
-  bucket_prefix = "new_bucket"
-}
-```
 
 ## Training Goals for day one
 Though this workshop we will learn:
@@ -48,7 +39,7 @@ and a second role (and aws profile) that has more elevated permissions to run Te
 This could be within the same AWS Account, or across multiple AWS accounts.
 If you haven't got this configured, then [start by doing that.](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 
-## Tasks
+## Task One - Configure your workstation for using Terraform with AWS Assumed Roles and MFA
 1.  Install `aws-vault` and `awscli` and `terraform`
 
     **For Mac via [brew](https://brew.sh/)**
@@ -93,25 +84,29 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     ```bash
     aws-vault exec terraformrole -- aws s3 ls
     ```
+## Example of a Terraform resource
+This is what a resource that creates an S3 bucket looks like:
+```hcl
+resource "aws_s3_bucket" "b" {
+  bucket_prefix = "new_bucket"
+}
+```
 
-5.  Running terraform:
-    ```bash
-    aws-vault exec terraformrole -- terraform apply
-    ```
+## [Demo One](./demo_one) - Create a Terraform Template and apply it
+1.  Using a Makefile to simplify commands
+2.  Create an S3 bucket in a particular region
+3.  Remove the bucket
 
-6.  Create a resource and apply incremental changes until it functions
-7.  Create a S3 bucket as a Terraform resource
-8.  Check that the bucket exists via AWS Console or AWS CLI
-    ```bash
-    aws-vault exec terraformrole -- aws s3 ls
-    ```
-9.  Add outputs to Terraform config for bucket name and bucket endpoint
+## [Demo Two](./demo_two) - Create a Terraform Template with outputs and save the state remotely
+1.  Create an S3 bucket that will be used to store all the remote states
+2.  Create a variable file to store the bucket name
+3.  Create a Terraform template that creates an S3 bucket that is configured for hosting static websites
+4.  Initialise Terraform with extra variables that describe the remote state bucket, state region and state file name
+5.  Apply the Terraform template
 
-10.  Add web access to bucket - example found in demo_two
-11.  Add external state storage to config, and init terraform to use s3 remote state - example found in demo_two
-12.  Create a new template that uses remote terraform state to find the bucket name
-13.  Create a new `aws_s3_bucket_object` to the terraform template that uploads `index.html` and `error.html` to the same bucket from another template using the discovered bucket name from the remote state to bucket
-14.  Terraform linting - to tidy up your code
+## [Demo Three](./demo_three) - Create a Terraform Template the uses outputs from a remote state
+
+## Terraform formatting - to tidy up your code
      ```bash
       terraform fmt .
      ```
