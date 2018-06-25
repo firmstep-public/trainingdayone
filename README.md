@@ -64,15 +64,16 @@ Though this workshop we will learn:
 
 
 3.  On Mac edit `~/.aws/config` or on Windows edit `"%UserProfile%\.aws\config"`and add
+    Make sure you replace the parts with `<variable>` with your actual values!
     ```bash
     [profile securityaccount]
     region = eu-west-1
     [profile terraformrole]
     output = json
     region = eu-west-1
-    role_arn = arn:aws:iam::[ACCOUNT_ID]:role/TerraformRole
+    role_arn = arn:aws:iam::<ASSUMED_ACCOUNT_ID>:role/TerraformRole
     source_profile = securityaccount
-    mfa_serial = arn:aws:iam::[ACCOUNT_ID]:mfa/myuser
+    mfa_serial = arn:aws:iam::<SECURITY_ACCOUNT_ID>:mfa/<AWSIAMUSERNAME>
     ```
 
 4.  Test that it works:
