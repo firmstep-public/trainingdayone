@@ -36,4 +36,4 @@ make apply
 *  This bucket will be used for the next demo, so don't destroy it just yet.
 
 You can read more about the `aws_s3_bucket` resource [here](https://www.terraform.io/docs/providers/aws/r/s3_bucket.html)
-To remove the bucket 
+To remove the bucket in the end of all demos type `make destroy`

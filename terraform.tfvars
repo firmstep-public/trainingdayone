@@ -1,5 +1,3 @@
-web_bucket_name = "web-day-one"
-
 region = "eu-west-1"
 
 state_region = "eu-west-1"

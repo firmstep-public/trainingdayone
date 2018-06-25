@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "web" {
-  bucket        = "${var.web_bucket_name}"
+  bucket_prefix = "${var.web_bucket_name_prefix}"
   acl           = "public-read"
   force_destroy = true
 

@@ -84,7 +84,7 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     ```bash
     aws-vault exec terraformrole -- aws s3 ls
     ```
-## Example of a Terraform resource
+#### Example of a Terraform resource
 This is what a resource that creates an S3 bucket looks like:
 ```hcl
 resource "aws_s3_bucket" "b" {
@@ -95,19 +95,26 @@ resource "aws_s3_bucket" "b" {
 ## [Demo One](./demo_one) - Create a Terraform Template and apply it
 1.  Using a Makefile to simplify commands
 2.  Create an S3 bucket in a particular region
-3.  Remove the bucket
 
 ## [Demo Two](./demo_two) - Create a Terraform Template with outputs and save the state remotely
-1.  Create an S3 bucket that will be used to store all the remote states
-2.  Create a variable file to store the bucket name
-3.  Create a Terraform template that creates an S3 bucket that is configured for hosting static websites
+1.  Use the S3 bucket created in demo_one to store all the remote states
+2.  Create a variable file to store the state buckets name, the state key name for `demo_two` and the state region.
+3.  Create a Terraform template that creates a new S3 bucket that is configured for hosting static websites
 4.  Initialise Terraform with extra variables that describe the remote state bucket, state region and state file name
 5.  Apply the Terraform template
 
 ## [Demo Three](./demo_three) - Create a Terraform Template the uses outputs from a remote state
+1. Create a variable file that stores a key name for `demo_three` but uses the same bucket and region
+2. Create some html files that we will add to the S3 bucket created in `demo_two`
+3. Create a Terraform template that will upload the html files to a bucket
+4. Get the bucket name using the data provider `terraform_remote_state` to retrieve the web bucket name from `demo_two`
+5. Use `terraform apply` to upload the files to s3
+
+## [Demo Four](./demo_four) - Destroy the resources we created
+1. Destroy demo three, then demo two, then demo one.
 
 ## Terraform formatting - to tidy up your code
-     ```bash
-      terraform fmt .
-     ```
-     If you use **[Visual Studio Code](https://code.visualstudio.com/download)** as your IDE then you can install the [Terraform Plugin](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) to get syntax highlighting, code completion, and automatic formatting on file save. It works on Mac, Linux, and Windows.
+```bash
+terraform fmt .
+```
+If you use **[Visual Studio Code](https://code.visualstudio.com/download)** as your IDE then you can install the [Terraform Plugin](https://marketplace.visualstudio.com/items?itemName=mauve.terraform) to get syntax highlighting, code completion, and automatic formatting on file save. It works on Mac, Linux, and Windows.
