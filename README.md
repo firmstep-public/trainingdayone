@@ -63,7 +63,7 @@ Though this workshop we will learn:
     ```
 
 
-3.  Edit `~/.aws/config` and add
+3.  On Mac edit `~/.aws/config` or on Windows edit `"%UserProfile%\.aws\config"`and add
     ```bash
     [profile securityaccount]
     region = eu-west-1
