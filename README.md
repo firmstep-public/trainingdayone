@@ -71,7 +71,7 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
 
 
 3.  On Mac edit `~/.aws/config` or on Windows edit `"%UserProfile%\.aws\config"`and add
-    Make sure you replace the parts with `<variable>` with your actual values!
+
     ```bash
     [profile securityaccount]
     region = eu-west-1
@@ -82,6 +82,12 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     source_profile = securityaccount
     mfa_serial = arn:aws:iam::<SECURITY_ACCOUNT_ID>:mfa/<AWSIAMUSERNAME>
     ```
+    #### NOTE: Make sure you replace the parts with `<variable>` with your actual values.
+    *  `ASSUMED_ACCOUNT_ID` is the AWS Account ID of the `terraformrole` that was created for using Terraform.
+    *  `SECURITY_ACCOUNT_ID` is the AWS Account ID of the IAM User you use (it's fine for the assumed and security accounts to be the same)
+    *  `AWSIAMUSERNAME` is the IAM username that you are using in your AWS security account.
+    
+    For more details on this setup read the [aws-vault usage guide](https://github.com/99designs/aws-vault/blob/master/USAGE.md).
 
 4.  Test that it works:
     ```bash
