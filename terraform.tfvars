@@ -7,4 +7,4 @@ state_region = "eu-west-1"
 #    export AWS_PROFILE=terraformrole
 #    aws-vault exec ${AWS_PROFILE} -- aws s3 mb s3://demo-tf-fs-state
 state_bucket = "demo-tf-fs-state"
-website_key = "mykey.tfstate"
+website_key = "jamie.tfstate"

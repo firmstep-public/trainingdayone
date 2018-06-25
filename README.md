@@ -43,11 +43,20 @@ Though this workshop we will learn:
 
 ## Tasks
 1.  Install `aws-vault` and `awscli` and `terraform`
+
+    **For Mac via [brew](https://brew.sh/)**
     ```bash
     brew cask install aws-vault
     brew install awscli terraform
     brew upgrade awscli terraform
     ```
+    **For Windows via [choco](https://chocolatey.org/docs/installation)**
+    ```powershell
+    choco install terraform awscli
+    Invoke-WebRequest -Uri "https://github.com/99designs/aws-vault/releases/download/v4.2.1/aws-vault-windows-386.exe" -OutFile "$PSScriptRoot/aws-vault-windows-386.exe"
+    Start-Process -Filepath "$PSScriptRoot/aws-vault-windows-386.exe"
+    ``` 
+
 2.  Set up local credentials
     ```bash
     aws-vault add securityaccount
