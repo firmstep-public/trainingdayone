@@ -7,8 +7,12 @@ resource "aws_s3_bucket" "web" {
     index_document = "index.html"
     error_document = "error.html"
   }
+}
 
-  policy = <<EOF
+resource "aws_s3_bucket_policy" "web" {
+  bucket = "${aws_s3_bucket.web.id}"
+
+  policy = <<POLICY
 {
     "Version": "2008-10-17",
     "Statement": [
@@ -19,11 +23,11 @@ resource "aws_s3_bucket" "web" {
                 "AWS": "*"
             },
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::${var.web_bucket_name}/*"
+            "Resource": "arn:aws:s3:::${aws_s3_bucket.web.id}/*"
         }
     ]
 }
-EOF
+POLICY
 }
 
 output "bucket_name" {
