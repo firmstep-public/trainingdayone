@@ -50,9 +50,12 @@ If you haven't got this configured, then [start by doing that.](https://docs.aws
     ```
     **For Windows via [choco](https://chocolatey.org/docs/installation)**
     ```powershell
-    choco install terraform awscli
+    choco install terraform awscli make
     Invoke-WebRequest -Uri "https://github.com/99designs/aws-vault/releases/download/v4.2.1/aws-vault-windows-386.exe" -OutFile "$PSScriptRoot/aws-vault-windows-386.exe"
-    Start-Process -Filepath "$PSScriptRoot/aws-vault-windows-386.exe"
+    rename-item "$PSScriptRoot/aws-vault-windows-386.exe" aws-vault.exe
+    Start-Process -Filepath "$PSScriptRoot/aws-vault.exe"
+    $oldpath = (Get-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH).path
+    Set-ItemProperty -Path ‘Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment’ -Name PATH -Value "$PSScriptRoot/aws-vault.exe"
     ``` 
 
 2.  Set up local credentials
